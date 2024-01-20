@@ -1,6 +1,4 @@
 from decimal import Decimal
-
-from django.core.files.storage import FileSystemStorage
 from django.views import View
 from datetime import datetime, timedelta
 from django.views.generic import TemplateView
@@ -8,6 +6,7 @@ from shop.models import Client, Order, Product
 from dateutil.relativedelta import relativedelta
 from django.shortcuts import render, get_object_or_404
 from shop.forms import EditProduct, LoadImageForProduct
+from django.core.files.storage import FileSystemStorage
 
 
 def get_all_customer_orders_and_lists_items_in_order(request,
@@ -301,9 +300,9 @@ def form_for_load_image_for_product(request):
             #    upload_to_path = \
             #        product._meta.get_field('image').upload_to
             #    name_image = image.name
-
-            #    fs.save(upload_to_path + image.name, image)
-            #    product.image = upload_to_path + image.name
+            #
+            #    fs.save(upload_to_path + name_image, image)
+            #    product.image = upload_to_path + name_image
             #    product.save()
 
     else:
