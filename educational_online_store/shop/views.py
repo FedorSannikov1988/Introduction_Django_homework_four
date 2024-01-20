@@ -315,3 +315,40 @@ def form_for_load_image_for_product(request):
     return render(request,
                   'form_for_load_image_for_product.html',
                   context)
+
+
+class FormForLoadImageForProductV2(View):
+
+    def get(self, request):
+
+        form = LoadImageForProduct()
+
+        context = {
+            "form": form
+        }
+        return render(request,
+                      'form_for_load_image_for_product.html',
+                      context)
+
+    def post(self, request):
+
+        form = \
+            LoadImageForProduct(request.POST, request.FILES)
+
+        if form.is_valid():
+
+            image_file = request.FILES['image']
+
+            product = form.cleaned_data['product']
+            product = Product.objects.get(pk=product.pk)
+
+            if product:
+                product.image.save(image_file.name, image_file)
+                product.save()
+
+        context = {
+            "form": form
+        }
+        return render(request,
+                      'form_for_load_image_for_product.html',
+                      context)

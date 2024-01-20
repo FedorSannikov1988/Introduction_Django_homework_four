@@ -44,4 +44,8 @@ class LoadImageForProduct(forms.Form):
                                      label='Товар:'
     )
 
-    image = forms.ImageField()
+    #image = forms.ImageField(widget=forms.ClearableFileInput())
+    image = forms.ImageField(widget=forms.FileInput())
+    #image = forms.ImageField(widget=forms.TextInput())
+    #image = forms.ImageField(widget=forms.URLInput())
+

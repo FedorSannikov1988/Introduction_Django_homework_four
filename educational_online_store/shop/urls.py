@@ -4,7 +4,8 @@ from .views import get_all_customer_orders_and_lists_items_in_order, \
                    GetListProductsOrderedByCustomerIdFromAllHisOrdersV2, \
                    GetListProductsOrderedByCustomerIdFromAllHisOrdersV3, \
                    form_for_edit_product_information, \
-                   form_for_load_image_for_product
+                   form_for_load_image_for_product, \
+                   FormForLoadImageForProductV2
 
 
 urlpatterns = [
@@ -34,5 +35,10 @@ urlpatterns = [
     path('form_for_load_image_for_product/',
          form_for_load_image_for_product,
          name='form_for_load_image_for_product'),
+
+    #только для того что бы поработать с классами вариант №2:
+    path('form_for_load_image_for_product_v2/',
+         FormForLoadImageForProductV2.as_view(),
+         name='form_for_load_image_for_product_v2'),
 
 ]
